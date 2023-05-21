@@ -7,12 +7,6 @@ class ShimmerText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: BaseShimmer(child: child),
-    );
+    return BaseShimmer(child: child);
   }
 }

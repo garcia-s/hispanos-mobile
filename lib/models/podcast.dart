@@ -8,7 +8,7 @@ class Podcast {
   late final String link;
   late final String title;
   late final int author;
-  late final Uri? imageUri;
+  late final String? imageUri;
   late final Document content;
 
   Podcast.fromJson(Map<String, dynamic> map) {
@@ -19,8 +19,6 @@ class Podcast {
     title = map["title"]["rendered"];
     author = map["author"];
     content = parse(map["content"]["rendered"]);
-    imageUri = map["featured_image_src"] == Null
-        ? Uri.parse(map["featured_image_src"])
-        : null;
+    imageUri = map["featured_image_src"];
   }
 }

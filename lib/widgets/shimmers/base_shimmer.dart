@@ -7,9 +7,10 @@ class BaseShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Shimmer.fromColors(
-      baseColor: const Color.fromARGB(255, 56, 56, 56),
-      highlightColor: const Color.fromARGB(255, 77, 77, 77),
+      baseColor: theme.hoverColor,
+      highlightColor: theme.highlightColor,
       child: child,
     );
   }

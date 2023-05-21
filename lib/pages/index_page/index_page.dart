@@ -1,39 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hispanosmobile/l10n/get_localization.dart';
-import 'package:hispanosmobile/pages/index_page/mockup/mockup_index_content.dart';
-import 'package:hispanosmobile/state/state_provider.dart';
-import 'package:hispanosmobile/widgets/posts_grid.dart';
+import 'package:hispanosmobile/bottom_navigation.dart';
+import 'package:hispanosmobile/pages/index_page/home/home_tab.dart';
+import 'package:hispanosmobile/state/splash_screen_provider.dart';
+import 'package:hispanosmobile/widgets/loading_screen.dart';
 
-class BlogPage extends ConsumerWidget {
-  const BlogPage({super.key});
+class IndexPage extends ConsumerStatefulWidget {
+  const IndexPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final localization = getLocalization(context)!;
-    final appState = ref.watch(appStateProvider);
+  ConsumerState<IndexPage> createState() => _IndexPageState();
+}
+
+class _IndexPageState extends ConsumerState<IndexPage> {
+  int _index = 0;
+
+  final Map<int, Widget> tabs = {
+    0: const HomeTab(),
+    1: Container(),
+    2: Container(),
+    3: Container(),
+  };
+  @override
+  Widget build(BuildContext context) {
+    final splashScreen = ref.watch(splashScreenProvider);
+    if (splashScreen) return const LoadingScreen();
     return Scaffold(
-      body: appState.posts == null
-          ? const MockupIndexContent()
-          : PostsGrid(
-              appstate: appState,
-            ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.abc),
-            label: localization.blog,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.abc),
-            label: localization.magazine,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.abc),
-            label: localization.podcasts,
-          )
-        ],
+      bottomNavigationBar: AppBottomNavigationBar(
+        onTabChange: (i) => setState(() => _index = i),
+        index: _index,
       ),
+      body: tabs[_index],
     );
   }
 }

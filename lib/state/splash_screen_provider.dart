@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hispanosmobile/state/categories_provider.dart';
+import 'package:hispanosmobile/state/podcast_provider.dart';
 
 final splashScreenProvider =
     StateNotifierProvider<SplashScreenStateNotifier, bool>(
@@ -17,6 +18,7 @@ class SplashScreenStateNotifier extends StateNotifier<bool> {
     Timer(const Duration(seconds: 2), () {
       state = false;
       ref.read(categoryProvider.notifier).initialize();
+      ref.read(podcastProvider.notifier).initialize();
     });
   }
 }

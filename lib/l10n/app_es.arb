@@ -1,5 +1,7 @@
 {
     "magazine": "Revista",
     "podcasts": "Podcasts",
-    "blog": "Blog"
+    "blog": "Blog",
+    "home": "Inicio",
+    "indexPodcastsHeadline": "Ultímos Podcasts"
 }

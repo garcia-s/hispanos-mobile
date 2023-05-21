@@ -1,25 +1,32 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hispanosmobile/datasources/rest_api_datasources.dart';
-import 'package:hispanosmobile/models/app_category.dart';
 import 'package:hispanosmobile/models/post.dart';
 import 'package:hispanosmobile/state/categories_provider.dart';
 
-final postsProvider =
-    StateNotifierProvider<PostStateNotifier, List<Post>?>((ref) {
-  final instance = PostStateNotifier(ref);
-  final categories = ref.watch(categoryProvider);
-  if (categories != null) instance.initialize(categories);
-  return instance;
-});
+final postsProvider = StateNotifierProvider<PostStateNotifier, List<Post>?>(
+    (ref) => PostStateNotifier(ref));
 
 class PostStateNotifier extends StateNotifier<List<Post>?> {
-  PostStateNotifier(this.ref) : super(null);
+  PostStateNotifier(this.ref) : super(null) {
+    initialize();
+  }
   final Ref ref;
 
-  void initialize(List<AppCategory> categories) async {
-    final ids = categories.map((e) => (e.id)).toList();
-    final datasource = RestApiDataSource();
-    final postsMap = await datasource.getPostsByCategory(categories: ids);
-    state = postsMap.map((e) => Post.fromJson(e)).toList();
+  void initialize() async {
+    final categories = ref.watch(categoryProvider);
+    if (categories == null) return;
+    try {
+      final datasource = RestApiDataSource();
+      final futures =
+          categories.map((e) => datasource.getPostsByCategory(e.id));
+      final response = await Future.wait(futures);
+      state = response
+          .expand((i) => i)
+          .toList()
+          .map((e) => Post.fromJson(e))
+          .toList();
+    } catch (e) {
+      //
+    }
   }
 }
