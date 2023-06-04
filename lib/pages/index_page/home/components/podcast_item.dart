@@ -25,7 +25,9 @@ class PodcastItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           padding: const EdgeInsets.all(15),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed("/podcast", arguments: podcast);
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

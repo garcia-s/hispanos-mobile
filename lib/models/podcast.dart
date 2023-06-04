@@ -1,6 +1,3 @@
-import 'package:html/dom.dart';
-import 'package:html/parser.dart';
-
 class Podcast {
   late final int id;
   late final DateTime date;
@@ -9,7 +6,7 @@ class Podcast {
   late final String title;
   late final int author;
   late final String? imageUri;
-  late final Document content;
+  late final String content;
 
   Podcast.fromJson(Map<String, dynamic> map) {
     id = map["id"];
@@ -18,7 +15,7 @@ class Podcast {
     link = map["link"];
     title = map["title"]["rendered"];
     author = map["author"];
-    content = parse(map["content"]["rendered"]);
+    content = map["content"]["rendered"];
     imageUri = map["featured_image_src"];
   }
 }

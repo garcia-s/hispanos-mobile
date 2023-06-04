@@ -31,6 +31,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_html: 3.0.0-beta.1
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.3.6
@@ -39,6 +40,7 @@ dependencies:
   intl: any
   jiffy: ^6.1.0
   shimmer: ^2.0.0
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_lints: ^2.0.0

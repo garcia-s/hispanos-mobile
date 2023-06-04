@@ -1,6 +1,3 @@
-import 'package:html/dom.dart';
-import 'package:html/parser.dart';
-
 class Post {
   late final int id;
   late final DateTime date;
@@ -9,7 +6,7 @@ class Post {
   late final String title;
   late final AuthorData author;
   late final String imageUri;
-  late final Document content;
+  late final String content;
 
   Post.fromJson(Map<String, dynamic> map) {
     id = map["id"];
@@ -18,7 +15,7 @@ class Post {
     link = map["link"];
     title = map["title"]["rendered"];
 
-    content = parse(map["content"]["rendered"]);
+    content = map["content"]["rendered"];
     imageUri = map["featured_image_src"];
     author = AuthorData(id: map["author"], name: map["author_data"]["name"]);
   }

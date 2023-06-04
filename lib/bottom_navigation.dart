@@ -12,16 +12,24 @@ class AppBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localization = getLocalization(context)!;
+    final theme = Theme.of(context);
     return BottomNavigationBar(
+      useLegacyColorScheme: false,
       currentIndex: index,
       onTap: onTabChange,
+      selectedIconTheme: theme.iconTheme,
+      unselectedLabelStyle: theme.textTheme.labelSmall,
+      selectedLabelStyle: theme.textTheme.labelSmall,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
       items: [
         BottomNavigationBarItem(
-          icon: const Icon(Icons.abc),
+          icon: const Icon(Icons.home_rounded),
+          backgroundColor: theme.primaryColor,
           label: localization.home,
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.abc),
+          icon: const Icon(Icons.newspaper),
           label: localization.blog,
         ),
         BottomNavigationBarItem(
@@ -29,7 +37,7 @@ class AppBottomNavigationBar extends StatelessWidget {
           label: localization.magazine,
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.abc),
+          icon: const Icon(Icons.podcasts),
           label: localization.podcasts,
         )
       ],

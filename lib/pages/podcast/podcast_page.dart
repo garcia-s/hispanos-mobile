@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hispanosmobile/models/post.dart';
+import 'package:hispanosmobile/models/podcast.dart';
+
 import 'package:flutter_html/flutter_html.dart';
 
-class PostPage extends StatelessWidget {
-  const PostPage({super.key});
+class PodcastPage extends StatelessWidget {
+  const PodcastPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Post post = ModalRoute.of(context)!.settings.arguments as Post;
+    final Podcast post = ModalRoute.of(context)!.settings.arguments as Podcast;
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -30,7 +31,7 @@ class PostPage extends StatelessWidget {
                         bottom: Radius.circular(30),
                       ),
                       child: Image.network(
-                        post.imageUri,
+                        post.imageUri!,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -46,7 +47,7 @@ class PostPage extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
                     post.title,
-                    style: theme.textTheme.headlineMedium,
+                    style: theme.textTheme.titleLarge,
                   ),
                 ),
                 Padding(
@@ -59,9 +60,7 @@ class PostPage extends StatelessWidget {
                       'div',
                       'style',
                       'ul',
-                      'script',
-                      'figure',
-                      'iframe',
+                      'script'
                     },
                   ),
                 ),
