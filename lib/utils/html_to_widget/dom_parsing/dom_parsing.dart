@@ -4,7 +4,7 @@ library dom_parsing;
 
 import 'dom.dart';
 import 'html_escape.dart';
-import 'src/constants.dart' show rcdataElements;
+import '../src/constants.dart' show rcdataElements;
 
 // Export a function which was previously declared here.
 export 'html_escape.dart';

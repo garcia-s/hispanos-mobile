@@ -5,14 +5,14 @@ import 'dart:collection';
 
 import 'package:hispanosmobile/utils/html_to_widget/interfaces/treebuilder_interface.dart';
 
-import '../dom.dart';
-import '../parser.dart' show getElementNameTuple;
+import './dom.dart';
+import './parser.dart' show getElementNameTuple;
 import 'package:source_span/source_span.dart';
 
-import './constants.dart';
-import './list_proxy.dart';
-import './token.dart';
-import './utils.dart';
+import '../src/constants.dart';
+import '../src/list_proxy.dart';
+import '../src/token.dart';
+import '../src/utils.dart';
 
 /// Open elements in the formatting category, most recent element last.
 ///

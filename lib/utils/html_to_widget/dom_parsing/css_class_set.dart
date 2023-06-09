@@ -6,7 +6,7 @@
 
 import 'dart:collection';
 
-import '../dom.dart';
+import 'dom.dart';
 
 class ElementCssClassSet extends _CssClassSetImpl {
   final HtmlElement _element;
@@ -15,6 +15,7 @@ class ElementCssClassSet extends _CssClassSetImpl {
 
   @override
   Set<String> readClasses() {
+    
     final s = LinkedHashSet<String>();
     final classname = _element.className;
 

@@ -3,7 +3,7 @@ library html.src.query;
 
 import 'package:csslib/parser.dart';
 import 'package:csslib/visitor.dart';
-import '../dom.dart';
+import './dom.dart';
 import 'package:html/src/constants.dart' show isWhitespaceCC;
 
 bool matches(HtmlElement node, String selector) =>

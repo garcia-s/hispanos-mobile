@@ -20,12 +20,12 @@ import 'package:hispanosmobile/utils/html_to_widget/interfaces/parser_interface.
 import 'package:source_span/source_span.dart';
 
 import './dom.dart';
-import './src/constants.dart';
-import './src/encoding_parser.dart';
-import './src/token.dart';
-import './src/tokenizer.dart';
-import './src/treebuilder.dart';
-import './src/utils.dart';
+import '../src/constants.dart';
+import '../src/encoding_parser.dart';
+import '../src/token.dart';
+import '../src/tokenizer.dart';
+import 'treebuilder.dart';
+import '../src/utils.dart';
 
 /// Parse the [input] html5 document into a tree. The [input] can be
 /// a [String], [List<int>] of bytes or an [HtmlTokenizer].
