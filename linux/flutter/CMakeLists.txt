@@ -13,9 +13,9 @@ include(${EPHEMERAL_DIR}/generated_config.cmake)
 # which isn't available in 3.10.
 function(list_prepend LIST_NAME PREFIX)
     set(NEW_LIST "")
-    foreach(element ${${LIST_NAME}})
-        list(APPEND NEW_LIST "${PREFIX}${element}")
-    endforeach(element)
+    foreach(HtmlElement ${${LIST_NAME}})
+        list(APPEND NEW_LIST "${PREFIX}${HtmlElement}")
+    endforeach(HtmlElement)
     set(${LIST_NAME} "${NEW_LIST}" PARENT_SCOPE)
 endfunction()
 

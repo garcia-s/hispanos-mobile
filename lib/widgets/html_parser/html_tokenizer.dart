@@ -9,7 +9,7 @@
 //   HtmlToken? _currentToken;
 //   HtmlTokenizerState get currentState => _currentState;
 //   String? _tempBuffer;
-//   List<HtmlToken> _elementsStack = [];
+//   List<HtmlToken> _HtmlElementsStack = [];
 
 //   run(String html) {
 //     while (_cursor <= html.length) {
@@ -145,7 +145,7 @@
 
 //   _handleTagNameState(String currentInputChar) {
 //     if (["\\", "\n", "\f", " "].contains(currentInputChar)) {
-//       return _currentState = HtmlTokenizerState.beforeAttributeNameState;
+//       return _currentState = HtmlTokenizerState.beforeHtmlAttributeNameState;
 //     }
 
 //     if (currentInputChar == '/') {
