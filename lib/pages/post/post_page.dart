@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hispanosmobile/models/post.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:hispanosmobile/widgets/renderers/html_custom_widget.dart';
 
 class PostPage extends StatelessWidget {
   const PostPage({super.key});
@@ -52,18 +52,7 @@ class PostPage extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Html(
-                    data: post.content.replaceAll(
-                        RegExp('<style>(.*?)</style>', dotAll: true), ''),
-                    doNotRenderTheseTags: const {
-                      'div',
-                      'style',
-                      'ul',
-                      'script',
-                      'figure',
-                      'iframe',
-                    },
-                  ),
+                  child: HtmlCustomWidget(post.content),
                 ),
               ],
             ),

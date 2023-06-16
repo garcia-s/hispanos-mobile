@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hispanosmobile/models/podcast.dart';
-
-import 'package:flutter_html/flutter_html.dart';
+import 'package:hispanosmobile/widgets/renderers/html_custom_widget.dart';
 
 class PodcastPage extends StatelessWidget {
   const PodcastPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Podcast post = ModalRoute.of(context)!.settings.arguments as Podcast;
+    final Podcast podcast =
+        ModalRoute.of(context)!.settings.arguments as Podcast;
     final theme = Theme.of(context);
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -18,7 +17,7 @@ class PodcastPage extends StatelessWidget {
             backgroundColor: theme.canvasColor,
             expandedHeight: 300,
             flexibleSpace: Hero(
-              tag: post.id,
+              tag: podcast.id,
               child: Stack(
                 children: [
                   Positioned(
@@ -31,7 +30,7 @@ class PodcastPage extends StatelessWidget {
                         bottom: Radius.circular(30),
                       ),
                       child: Image.network(
-                        post.imageUri!,
+                        podcast.imageUri!,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -46,23 +45,14 @@ class PodcastPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    post.title,
+                    podcast.title,
                     style: theme.textTheme.titleLarge,
                   ),
                 ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Html(
-                    data: post.content.replaceAll(
-                        RegExp('<style>(.*?)</style>', dotAll: true), ''),
-                    doNotRenderTheseTags: const {
-                      'div',
-                      'style',
-                      'ul',
-                      'script'
-                    },
-                  ),
+                  child: HtmlCustomWidget(podcast.content),
                 ),
               ],
             ),
